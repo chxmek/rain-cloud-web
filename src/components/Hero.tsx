@@ -4,9 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useTranslation } from "@/lib/i18n";
 import Magnetic from "@/components/animations/Magnetic";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function Hero() {
   const { t } = useTranslation();
+  const isMobile = useIsMobile();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -19,6 +21,7 @@ export default function Hero() {
 
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   useEffect(() => {
+    if (isMobile) return; // No mouse on touch devices
     const handleMouse = (e: MouseEvent) => {
       setMousePos({
         x: (e.clientX / window.innerWidth - 0.5) * 2,
@@ -27,7 +30,7 @@ export default function Hero() {
     };
     window.addEventListener("mousemove", handleMouse);
     return () => window.removeEventListener("mousemove", handleMouse);
-  }, []);
+  }, [isMobile]);
 
   /* rain drops animation */
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -47,7 +50,8 @@ export default function Hero() {
     resize();
     window.addEventListener("resize", resize);
 
-    for (let i = 0; i < 80; i++) {
+    const dropCount = window.innerWidth < 768 ? 20 : 80;
+    for (let i = 0; i < dropCount; i++) {
       drops.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -58,7 +62,8 @@ export default function Hero() {
     }
 
     const particles: { x: number; y: number; r: number; o: number; dx: number; dy: number }[] = [];
-    for (let i = 0; i < 30; i++) {
+    const particleCount = window.innerWidth < 768 ? 6 : 30;
+    for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -120,23 +125,23 @@ export default function Hero() {
         className="absolute inset-0 z-[1] pointer-events-none"
       />
 
-      {/* floating orbs with mouse parallax */}
+      {/* floating orbs with mouse parallax — hidden on mobile for performance */}
       <div
-        className="absolute top-[-15%] left-[15%] w-[500px] h-[500px] rounded-full bg-accent/[0.04] blur-[120px] pointer-events-none animate-float-slow"
+        className="hidden md:block absolute top-[-15%] left-[15%] w-[500px] h-[500px] rounded-full bg-accent/[0.04] blur-[120px] pointer-events-none animate-float-slow"
         style={{ transform: `translate(${mousePos.x * 20}px, ${mousePos.y * 20}px)` }}
       />
       <div
-        className="absolute bottom-[-10%] right-[10%] w-[400px] h-[400px] rounded-full bg-violet/[0.04] blur-[100px] pointer-events-none animate-float"
+        className="hidden md:block absolute bottom-[-10%] right-[10%] w-[400px] h-[400px] rounded-full bg-violet/[0.04] blur-[100px] pointer-events-none animate-float"
         style={{ transform: `translate(${mousePos.x * -15}px, ${mousePos.y * -15}px)` }}
       />
       <div
-        className="absolute top-[20%] right-[20%] w-[300px] h-[300px] rounded-full bg-accent/[0.03] blur-[80px] pointer-events-none"
+        className="hidden md:block absolute top-[20%] right-[20%] w-[300px] h-[300px] rounded-full bg-accent/[0.03] blur-[80px] pointer-events-none"
         style={{ transform: `translate(${mousePos.x * 10}px, ${mousePos.y * 10}px)`, animation: 'float 10s ease-in-out infinite reverse' }}
       />
 
-      {/* morphing blob shapes */}
-      <div className="absolute top-[30%] left-[8%] w-48 h-48 bg-accent/[0.03] animate-morph blur-[60px] pointer-events-none" />
-      <div className="absolute bottom-[20%] right-[12%] w-36 h-36 bg-violet/[0.04] animate-morph blur-[50px] pointer-events-none" style={{ animationDelay: '-4s', animationDuration: '15s' }} />
+      {/* morphing blob shapes — hidden on mobile */}
+      <div className="hidden md:block absolute top-[30%] left-[8%] w-48 h-48 bg-accent/[0.03] animate-morph blur-[60px] pointer-events-none" />
+      <div className="hidden md:block absolute bottom-[20%] right-[12%] w-36 h-36 bg-violet/[0.04] animate-morph blur-[50px] pointer-events-none" style={{ animationDelay: '-4s', animationDuration: '15s' }} />
 
       <motion.div
         style={{ opacity, y, scale }}
@@ -144,8 +149,8 @@ export default function Hero() {
       >
         {/* brand mark */}
         <motion.div
-          initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-8"
         >
@@ -157,8 +162,8 @@ export default function Hero() {
 
         {/* brand name */}
         <motion.h1
-          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
           className="text-display text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] text-white mb-6 leading-none"
         >
@@ -167,8 +172,8 @@ export default function Hero() {
 
         {/* headline */}
         <motion.p
-          initial={{ opacity: 0, y: 25, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
           className="text-heading text-xl sm:text-2xl md:text-3xl text-slate-200/90 max-w-3xl mx-auto mb-4 leading-snug"
         >
@@ -179,8 +184,8 @@ export default function Hero() {
 
         {/* subline */}
         <motion.p
-          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
           className="text-body text-base sm:text-lg text-slate-500 max-w-xl mx-auto mb-10"
         >
@@ -189,8 +194,8 @@ export default function Hero() {
 
         {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.56, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2"
         >

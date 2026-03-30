@@ -104,7 +104,7 @@ export default function Trust() {
           transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
         >
           {/* navigation dots */}
-          <div className="flex items-center justify-center gap-3 mb-8">
+          {/* <div className="flex items-center justify-center gap-3 mb-8">
             {t.trust.testimonials.map((_, i) => (
               <button
                 key={i}
@@ -113,22 +113,22 @@ export default function Trust() {
                 aria-label={`Testimonial ${i + 1}`}
               />
             ))}
-          </div>
+          </div> */}
 
           {/* testimonial card */}
-          <div className="relative max-w-2xl mx-auto overflow-hidden min-h-[220px]">
+          {/* <div className="relative max-w-2xl mx-auto overflow-hidden min-h-[220px]">
             <AnimatePresence mode="wait">
               {t.trust.testimonials.map((testimonial, i) =>
                 i === activeTestimonial ? (
                   <motion.blockquote
                     key={i}
-                    initial={{ opacity: 0, x: 40, filter: "blur(4px)" }}
-                    animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, x: -40, filter: "blur(4px)" }}
+                    initial={{ opacity: 0, x: 40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -40 }}
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     className="relative p-8 sm:p-10 rounded-2xl glass-card text-center"
                   >
-                    {/* quote mark */}
+               
                     <motion.svg
                       className="w-8 h-8 text-accent/20 mx-auto mb-4"
                       fill="currentColor"
@@ -150,7 +150,7 @@ export default function Trust() {
                 ) : null
               )}
             </AnimatePresence>
-          </div>
+          </div> */}
         </motion.div>
       </div>
     </section>

@@ -70,11 +70,11 @@ export default function Footer() {
             <ul className="space-y-2.5">
               <li>
                 <a
-                  href="mailto:hello@raincloud.co"
+                  href="mailto:chawanwits@outlook.com"
                   className="text-sm text-slate-400 hover:text-white transition-colors duration-300 inline-flex items-center gap-1 group"
                 >
                   <span className="w-0 h-px bg-accent group-hover:w-3 transition-all duration-300" />
-                  hello@raincloud.co
+                  chawanwits@outlook.com
                 </a>
               </li>
               <li>
@@ -91,7 +91,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://line.me/R/ti/p/@raincloud"
+                  href="https://lin.ee/ZxJU6lK"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-slate-400 hover:text-[#06C755] transition-colors duration-300 inline-flex items-center gap-1.5 group"

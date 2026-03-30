@@ -455,3 +455,110 @@ body {
 .stagger-children > *:nth-child(3) { animation-delay: 0.16s; }
 .stagger-children > *:nth-child(4) { animation-delay: 0.24s; }
 .stagger-children > *:nth-child(5) { animation-delay: 0.32s; }
+
+/* ══════════════════════════════════════════════════════════
+   Mobile Performance Optimizations
+   Reduces GPU-intensive effects on small viewports
+   ══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* reduce backdrop-filter blur (extremely expensive on iOS Safari) */
+  .glass {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .glass-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(10, 18, 32, 0.75);
+  }
+
+  .glass-card:hover {
+    transform: none;
+    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.4);
+  }
+
+  /* disable animated gradient background (continuous GPU repaint) */
+  .aurora-bg {
+    animation: none;
+    background-size: 100% 100%;
+  }
+
+  /* hide noise texture overlay (full-viewport compositing layer) */
+  .noise::before {
+    display: none;
+  }
+
+  /* stop gradient text animation (continuous repaint) */
+  .text-gradient {
+    animation: none;
+    background-size: 100% 100%;
+  }
+
+  /* disable morphing border-radius animation */
+  .animate-morph {
+    animation: none;
+    border-radius: 50%;
+  }
+
+  /* disable floating animations */
+  .animate-float,
+  .animate-float-slow {
+    animation: none;
+  }
+
+  /* reduce grid pattern intensity */
+  .grid-pattern {
+    opacity: 0.15;
+  }
+
+  /* disable animated border rotation (conic-gradient repaints) */
+  .animated-border::before {
+    display: none;
+  }
+
+  /* remove backdrop-filter from secondary button */
+  .btn-secondary {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(10, 18, 32, 0.6);
+  }
+
+  /* disable 3D perspective on cards (forces GPU compositing) */
+  .tilt-card {
+    transform-style: flat;
+    perspective: none;
+  }
+
+  .tilt-card-inner {
+    transform-style: flat;
+    transition: none;
+  }
+
+  /* simplify card spotlight (heavy radial-gradient repaint) */
+  .card-spotlight::after {
+    display: none;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   Reduced Motion Preference
+   Respects user accessibility settings
+   ══════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.2s !important;
+    scroll-behavior: auto !important;
+  }
+
+  .text-gradient,
+  .aurora-bg {
+    animation: none !important;
+  }
+}

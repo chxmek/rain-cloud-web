@@ -4,14 +4,16 @@ import { useRef, useState } from "react";
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useTranslation } from "@/lib/i18n";
 import Magnetic from "@/components/animations/Magnetic";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function FinalCTA() {
   const { t } = useTranslation();
+  const isMobile = useIsMobile();
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const orbScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.6, 1, 0.8]);
-  const orbRotate = useTransform(scrollYProgress, [0, 1], [0, 60]);
+  const orbScale = useTransform(scrollYProgress, [0, 0.5, 1], isMobile ? [1, 1, 1] : [0.6, 1, 0.8]);
+  const orbRotate = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [0, 60]);
   const [showQR, setShowQR] = useState(false);
 
   return (
@@ -24,22 +26,26 @@ export default function FinalCTA() {
       <div className="absolute inset-0 aurora-bg" />
       <div className="absolute inset-0 grid-pattern opacity-30" />
 
-      {/* morphing orbs with parallax */}
-      <motion.div
-        className="absolute bottom-0 left-1/2 w-[600px] h-[400px] rounded-full bg-accent/[0.06] blur-[150px] pointer-events-none"
-        style={{ scale: orbScale, rotate: orbRotate, x: "-50%" }}
-      />
-      <motion.div
-        className="absolute top-1/4 right-0 w-[300px] h-[300px] rounded-full bg-violet/[0.05] blur-[100px] pointer-events-none animate-morph"
-        style={{ scale: orbScale }}
-      />
-      <motion.div
-        className="absolute top-1/3 left-[10%] w-[200px] h-[200px] rounded-full bg-accent/[0.04] blur-[80px] pointer-events-none animate-float"
-        style={{ rotate: orbRotate }}
-      />
+      {/* morphing orbs with parallax — hidden on mobile for performance */}
+      {!isMobile && (
+        <>
+          <motion.div
+            className="absolute bottom-0 left-1/2 w-[600px] h-[400px] rounded-full bg-accent/[0.06] blur-[150px] pointer-events-none"
+            style={{ scale: orbScale, rotate: orbRotate, x: "-50%" }}
+          />
+          <motion.div
+            className="absolute top-1/4 right-0 w-[300px] h-[300px] rounded-full bg-violet/[0.05] blur-[100px] pointer-events-none animate-morph"
+            style={{ scale: orbScale }}
+          />
+          <motion.div
+            className="absolute top-1/3 left-[10%] w-[200px] h-[200px] rounded-full bg-accent/[0.04] blur-[80px] pointer-events-none animate-float"
+            style={{ rotate: orbRotate }}
+          />
+        </>
+      )}
 
-      {/* floating particles */}
-      {[...Array(6)].map((_, i) => (
+      {/* floating particles — reduced on mobile */}
+      {[...Array(isMobile ? 2 : 6)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute w-1 h-1 rounded-full bg-accent/30"
@@ -115,7 +121,7 @@ export default function FinalCTA() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Magnetic strength={0.15}>
                 <a
-                  href="mailto:hello@raincloud.co"
+                  href="mailto:chawanwits@outlook.com"
                   className="btn-primary text-base glow-md group"
                 >
                   <span>{t.cta.button}</span>
@@ -137,12 +143,12 @@ export default function FinalCTA() {
                 </a>
               </Magnetic>
               <motion.a
-                href="mailto:hello@raincloud.co"
+                href="mailto:chawanwits@outlook.com"
                 className="text-sm text-slate-500 hover:text-accent transition-colors duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                hello@raincloud.co
+                chawanwits@outlook.com
               </motion.a>
             </div>
 
