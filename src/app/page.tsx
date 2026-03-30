@@ -8,10 +8,12 @@ import Trust from "@/components/Trust";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import CursorGlow from "@/components/animations/CursorGlow";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Home() {
   return (
     <main className="flex-1">
+      <ScrollToTop />
       <CursorGlow />
       <Navigation />
       <Hero />

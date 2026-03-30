@@ -121,7 +121,7 @@ export default function Navigation() {
             className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8"
             style={{ background: 'rgba(5, 10, 16, 0.95)', backdropFilter: 'blur(40px)' }}
           >
-            <div className="absolute inset-0 grid-pattern opacity-30" />
+            <div className="absolute inset-0 grid-pattern opacity-30 pointer-events-none" />
             {navItems.map((item, i) => (
               <motion.a
                 key={item.href}
