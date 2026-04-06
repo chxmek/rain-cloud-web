@@ -23,10 +23,15 @@ export default function Footer() {
           >
             <motion.a
               href="#hero"
-              className="text-heading text-xl text-white hover:text-accent transition-colors duration-300 inline-block mb-4"
+              className="text-heading text-lg sm:text-xl text-white hover:text-accent transition-colors duration-300 inline-block mb-4 leading-tight"
               whileHover={{ scale: 1.02 }}
             >
-              Rain<span className="text-accent">Cloud24</span> Solutions
+              <span className="inline-flex flex-wrap items-baseline gap-x-1">
+                <span className="whitespace-nowrap">
+                  Rain<span className="text-accent">Cloud24</span>
+                </span>
+                <span>Solutions</span>
+              </span>
             </motion.a>
             <p className="text-body text-slate-500 text-sm max-w-xs leading-relaxed">
               {t.footer.description}

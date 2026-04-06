@@ -42,18 +42,21 @@ export default function Navigation() {
           {/* logo */}
           <a
             href="#hero"
-            className="text-heading text-lg sm:text-xl text-white hover:text-accent transition-colors duration-300"
+            className="text-heading text-base sm:text-lg lg:text-xl text-white hover:text-accent transition-colors duration-300 leading-none"
           >
-            Rain<span className="text-accent">Cloud24</span> Solutions
+            <span className="whitespace-nowrap">
+              Rain<span className="text-accent">Cloud24</span>
+            </span>
+            <span className="hidden lg:inline"> Solutions</span>
           </a>
 
           {/* desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden xl:flex items-center gap-4 2xl:gap-8">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="relative text-sm text-slate-400 hover:text-white transition-all duration-300 px-4 py-2 rounded-xl hover:bg-white/[0.04] group"
+                className="relative text-xs 2xl:text-sm whitespace-nowrap text-slate-400 hover:text-white transition-all duration-300 px-2.5 2xl:px-4 py-2 rounded-xl hover:bg-white/[0.04] group"
               >
                 {item.label}
                 <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 rounded-full bg-gradient-to-r from-accent to-violet opacity-0 transition-all duration-300 group-hover:w-4 group-hover:opacity-100" />
@@ -82,7 +85,7 @@ export default function Navigation() {
           </nav>
 
           {/* mobile: language + burger */}
-          <div className="flex md:hidden items-center gap-3">
+          <div className="flex xl:hidden items-center gap-3">
             <button
               onClick={toggleLocale}
               className="text-xs font-medium text-slate-400 hover:text-white transition-colors duration-300 px-2 py-1 rounded border border-white/[0.08] hover:border-accent/30"
@@ -131,7 +134,7 @@ export default function Navigation() {
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ delay: i * 0.08, duration: 0.4 }}
                 onClick={() => setMobileOpen(false)}
-                className="text-heading text-2xl text-white hover:text-accent transition-colors"
+                className="text-heading text-xl sm:text-2xl text-center px-6 text-white hover:text-accent transition-colors"
               >
                 {item.label}
               </motion.a>

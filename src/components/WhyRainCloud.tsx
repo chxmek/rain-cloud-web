@@ -31,10 +31,10 @@ export default function WhyRainCloud() {
             <span className="text-label text-accent mb-4 block">
               {t.why.label}
             </span>
-            <h2 className="text-heading text-3xl sm:text-4xl md:text-5xl text-white mb-6">
+            <h2 className="text-heading text-3xl sm:text-4xl md:text-5xl text-white mb-6 leading-tight">
               {t.why.headingLine1}
               <br />
-              <span className="text-gradient">{t.why.headingLine2}</span>
+              <span className="text-gradient break-words">{t.why.headingLine2}</span>
             </h2>
             <p className="text-body text-slate-400 text-base max-w-sm">
               {t.why.subtext}
