@@ -5,7 +5,7 @@ export const translations = {
     // ── Navigation ──────────────────────────────────────
     nav: {
       services: "บริการ",
-      why: "ทำไม RainCloud",
+      why: "ทำไม RainCloud24 Solutions",
       process: "กระบวนการ",
       work: "ผลงาน",
       contact: "ติดต่อเรา",
@@ -57,9 +57,9 @@ export const translations = {
 
     // ── Why RainCloud ───────────────────────────────────
     why: {
-      label: "Why RainCloud",
+      label: "Why RainCloud24 Solutions",
       headingLine1: "ทำไมต้อง",
-      headingLine2: "RainCloud",
+      headingLine2: "RainCloud24 Solutions",
       subtext:
         "เราไม่ใช่แค่ทีมพัฒนา เราคือพาร์ทเนอร์ด้านดิจิทัลที่คิดร่วมกับคุณตั้งแต่ต้นจนจบ",
       reasons: [
@@ -183,13 +183,13 @@ export const translations = {
       testimonials: [
         {
           quote:
-            "RainCloud ช่วยให้เราได้ระบบที่ใช้งานจริงได้ตั้งแต่วันแรก ไม่ใช่แค่สวย แต่ทำงานได้จริงทุกฟีเจอร์",
+            "RainCloud24 Solutions ช่วยให้เราได้ระบบที่ใช้งานจริงได้ตั้งแต่วันแรก ไม่ใช่แค่สวย แต่ทำงานได้จริงทุกฟีเจอร์",
           name: "สมชาย วงศ์ประเสริฐ",
           role: "CEO, TechVenture Co.",
         },
         {
           quote:
-            "ทีม RainCloud เข้าใจธุรกิจเราอย่างรวดเร็ว และแปลงความต้องการเป็นดีไซน์ที่เราไม่เคยจินตนาการได้มาก่อน",
+            "ทีม RainCloud24 Solutions เข้าใจธุรกิจเราอย่างรวดเร็ว และแปลงความต้องการเป็นดีไซน์ที่เราไม่เคยจินตนาการได้มาก่อน",
           name: "พิมพ์ชนก รัตนกุล",
           role: "Founder, ClearBrand Studio",
         },
@@ -217,7 +217,7 @@ export const translations = {
       startProject: "เริ่มโปรเจกต์",
       phone: "โทร",
       lineOa: "LINE Official",
-      copyright: "© {year} RainCloud. All rights reserved.",
+      copyright: "© {year} RainCloud24 Solutions. All rights reserved.",
       privacy: "Privacy Policy",
       terms: "Terms of Service",
     },
@@ -227,7 +227,7 @@ export const translations = {
     // ── Navigation ──────────────────────────────────────
     nav: {
       services: "Services",
-      why: "Why RainCloud",
+      why: "Why RainCloud24 Solutions",
       process: "Process",
       work: "Work",
       contact: "Contact Us",
@@ -279,9 +279,9 @@ export const translations = {
 
     // ── Why RainCloud ───────────────────────────────────
     why: {
-      label: "Why RainCloud",
+      label: "Why RainCloud24 Solutions",
       headingLine1: "Why choose",
-      headingLine2: "RainCloud",
+      headingLine2: "RainCloud24 Solutions",
       subtext:
         "We're not just a development team — we're your digital partner who thinks with you from start to finish.",
       reasons: [
@@ -411,13 +411,13 @@ export const translations = {
       testimonials: [
         {
           quote:
-            "RainCloud delivered a system that worked from day one — not just beautiful, but truly functional in every feature.",
+            "RainCloud24 Solutions delivered a system that worked from day one — not just beautiful, but truly functional in every feature.",
           name: "Somchai Wongprasert",
           role: "CEO, TechVenture Co.",
         },
         {
           quote:
-            "The RainCloud team understood our business quickly and turned our requirements into designs we never could have imagined.",
+            "The RainCloud24 Solutions team understood our business quickly and turned our requirements into designs we never could have imagined.",
           name: "Pimchanok Rattanakul",
           role: "Founder, ClearBrand Studio",
         },
@@ -445,7 +445,7 @@ export const translations = {
       startProject: "Start a Project",
       phone: "Call",
       lineOa: "LINE Official",
-      copyright: "© {year} RainCloud. All rights reserved.",
+      copyright: "© {year} RainCloud24 Solutions. All rights reserved.",
       privacy: "Privacy Policy",
       terms: "Terms of Service",
     },

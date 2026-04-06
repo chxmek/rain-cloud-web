@@ -18,9 +18,9 @@ const prompt = Prompt({
 });
 
 export const metadata: Metadata = {
-  title: "RainCloud — Digital Products ที่สร้างความเชื่อมั่น",
+  title: "RainCloud24 Solutions — Digital Products ที่สร้างความเชื่อมั่น",
   description:
-    "RainCloud ออกแบบและพัฒนาระบบดิจิทัล เว็บแอปพลิเคชัน และเว็บไซต์ระดับพรีเมียม สำหรับธุรกิจที่ต้องการคุณภาพจริง",
+    "RainCloud24 Solutions ออกแบบและพัฒนาระบบดิจิทัล เว็บแอปพลิเคชัน และเว็บไซต์ระดับพรีเมียม สำหรับธุรกิจที่ต้องการคุณภาพจริง",
   keywords: [
     "web development",
     "UX UI design",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     "Thailand",
   ],
   openGraph: {
-    title: "RainCloud — Digital Products ที่สร้างความเชื่อมั่น",
+    title: "RainCloud24 Solutions — Digital Products ที่สร้างความเชื่อมั่น",
     description:
       "เราช่วยธุรกิจเปลี่ยนไอเดียและความซับซ้อน ให้กลายเป็นผลิตภัณฑ์ดิจิทัลที่ชัดเจนและมีคุณภาพ",
     type: "website",

@@ -26,7 +26,7 @@ export default function Footer() {
               className="text-heading text-xl text-white hover:text-accent transition-colors duration-300 inline-block mb-4"
               whileHover={{ scale: 1.02 }}
             >
-              Rain<span className="text-accent">Cloud</span>
+              Rain<span className="text-accent">Cloud24</span> Solutions
             </motion.a>
             <p className="text-body text-slate-500 text-sm max-w-xs leading-relaxed">
               {t.footer.description}

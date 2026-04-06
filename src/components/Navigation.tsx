@@ -44,7 +44,7 @@ export default function Navigation() {
             href="#hero"
             className="text-heading text-lg sm:text-xl text-white hover:text-accent transition-colors duration-300"
           >
-            Rain<span className="text-accent">Cloud</span>
+            Rain<span className="text-accent">Cloud24</span> Solutions
           </a>
 
           {/* desktop nav */}
